@@ -2,19 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Weather</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 </head>
-<body>
-    <h1>Weather App</h1>
-    <div>
-        <h2>This Week Weather</h2>
-        <div id="weatherContainer"></div>
-    </div>
 
-    <div>
-        <h2>Temperature summary</h2>
-        <div id="temperatureSummary"></div>
-    </div>
+<body>
+    <header class="header">
+       <div class="header-inner">
+           <div>
+               <p class="header-subtitle">7-dat outlook</p>
+               <h1 class="header-title">This Week's Weather</h1>
+           </div>
+           <div class="header-meta">
+               <p class="location">📍 Colombo, LK</p>
+               <p class="updated">Updated just now</p>
+           </div>
+       </div>
+    </header>
+
+    <main class="main">
+        <section class="metrics-row" id="metricRow"></section>
+
+        <section class="section">
+            <h2 class="section-title">Daily forecast</h2>
+            <div class="cards-grid" id="cardsGrid"></div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Temperature chart</h2>
+            <div class="chart-wrap">
+                <div class="chart-bars" id="chartBars"></div>
+            </div>
+        </section>
+
+        <section class="section two-col">
+            <div class="panel">
+                <h2 class="section-title">Partly cloudy days</h2>
+                <div id="partlyList"></div>
+            </div>
+            <div class="panel">
+                <h2 class="section-title">Humidity highlights</h2>
+                <div id="humidityList"></div>
+            </div>
+        </section>
+
+    </main>
 
 
 <script src="script.js"></script>

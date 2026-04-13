@@ -1,0 +1,275 @@
+*, *::before, *::after {box-sizing: border-box; margin: 0; padding: 0;}
+
+:root {
+    --bg:        #0e1117;
+    --bg2:       #161b26;
+    --bg3:       #1e2535;
+    --border:    rgba(255,255,255,0.07);
+    --text:      #f0f2f8;
+    --muted:     #8892a4;
+    --accent:    #f5c842;
+    --accent2:   #4ab8f5;
+
+    --sunny:     #f5c842;
+    --cloudy:    #8892a4;
+    --rainy:     #4ab8f5;
+    --partly:    #68d9b3;
+    --stormy:    #b07ef5;
+
+    --font-display: 'DM Serif Display', serif;
+    --font-body:    'DM Sans', sans-serif;
+    --radius:    14px;
+    --radius-sm: 8px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.header{
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0;
+}
+.header-inner{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.header-subtitle {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+.header-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+}
+.header-meta { text-align: right; }
+.location { font-size: 14px; color: var(--text); }
+.updated  { font-size: 12px; color: var(--muted); }
+
+.main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.section-title {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+.metric-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1rem;
+}
+.metric-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+.metric-value {
+    font-family: var(--font-display);
+    font-size: 32px;
+    line-height: 1;
+}
+.metric-value span {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+}
+.weather-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: default;
+}
+.weather-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.18);
+}
+.weather-card.today {
+    border-color: var(--accent);
+    background: var(--bg3);
+}
+.card-day {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+.card-day.today-label { color: var(--accent); }
+.card-icon { font-size: 28px; line-height: 1; }
+.card-temp {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1;
+}
+.card-condition {
+    font-size: 12px;
+    color: var(--muted);
+}
+.humidity-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+}
+.humidity-track {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+.humidity-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent2);
+    opacity: 0.7;
+}
+.humidity-pct {
+    font-size: 10px;
+    color: var(--muted);
+    min-width: 28px;
+    text-align: right;
+}
+
+.chart-wrap {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem 1rem 1rem;
+}
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 120px;
+}
+.bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    justify-content: flex-end;
+}
+.bar-temp-label {
+    font-size: 11px;
+    color: var(--muted);
+}
+.bar-block {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    min-height: 4px;
+}
+.bar-day-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+@media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+
+.panel {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+
+.partly-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+.partly-item:last-child { border-bottom: none; }
+.partly-day { display: flex; align-items: center; gap: 8px; }
+.partly-temp {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--partly);
+}
+.empty-note { font-size: 13px; color: var(--muted); }
+
+.hum-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+.hum-item:last-child { border-bottom: none; }
+.hum-day { font-size: 13px; flex: 1; }
+.hum-track {
+    flex: 2;
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+.hum-fill {
+    height: 100%;
+    border-radius: 2px;
+}
+.hum-pct { font-size: 12px; color: var(--muted); min-width: 34px; text-align: right; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.weather-card { animation: fadeUp 0.4s ease both; }
